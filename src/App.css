@@ -1,0 +1,104 @@
+.logo-container {
+  color: white;
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+  margin-top: 10px;
+  margin-left: 15%; /* Сдвигаем на 1/8 экрана вправо */
+}
+
+.logo {
+  height: 40px;
+  width: auto;
+  filter: invert(100%); /* Инвертируем цвет логотипа на белый */
+  margin-right: 10px; 
+}
+
+h1 {
+  margin: 0;
+  font-size: 24px;
+  color: white; /* Устанавливаем белый цвет заголовка */
+}
+
+header {
+  display: flex;
+  align-items: center;
+}
+
+
+body {
+  background-image: url('background.svg');
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.start-screen {
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 90vh;
+  width: 50%; /* Изменим ширину контейнера на 80% экрана */
+  margin: 0 auto; /* Центрируем контейнер горизонтально */
+  color: white;
+  text-align: center;
+}
+
+.start-screen h1 {
+  font-size: 48px;
+  margin-bottom: 20px;
+}
+
+.subtext {
+  font-size: 24px;
+  margin-top: 20px;
+}
+
+.buttons-container {
+  display: flex;
+  margin-left: 45%;
+  margin-top: 10px;
+}
+
+.action-button {
+  display: flex;
+  align-items: center;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.button-icon {
+  width: 135px;
+  height: 48px;
+}
+
+.button-icon svg {
+  fill: #000; /* Replace with the desired SVG color */
+}
+
+.LoginPage {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  color: #000; /* Замените на желаемый цвет текста */
+}
+
+.login-page {
+  display: flex;
+}
+
+.left-background {
+  background-color: white;
+  width: 30%;
+  min-height: 100vh;
+}
+
+.content {
+  flex: 1;
+  padding: 20px;
+}
