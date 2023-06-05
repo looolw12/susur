@@ -22,7 +22,7 @@ const LoginPage = () => {
 
     try {
       // Send login request to the backend
-      const response = await axios.post('http://localhost:8000/login', {
+      const response = await axios.post('http://localhost:8000/token', {
         username: email, // Assuming email is used as the username
         password,
       });
@@ -34,7 +34,7 @@ const LoginPage = () => {
       navigate('/dashboard');
     } catch (error) {
       // Handle error response
-      if (error.response.status === 401) {
+      if (error.response && error.response.status === 401) {
         setErrorMessage('Неверные учетные данные. Пожалуйста, попробуйте снова.');
       } else {
         setErrorMessage('Произошла ошибка при входе. Пожалуйста, попробуйте снова.');
