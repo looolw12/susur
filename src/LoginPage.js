@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import './LoginPage.css';
+import logo from './logo.svg';
 
 const LoginPage = () => {
   const [email, setEmail] = useState('');
@@ -22,9 +23,9 @@ const LoginPage = () => {
 
     try {
       // Send login request to the backend
-      const response = await axios.post('http://localhost:8000/token', {
-        username: email, // Assuming email is used as the username
-        password,
+      const response = await axios.post('http://127.0.0.1:8000/login', {
+        username: email,
+        password: password,
       });
 
       // Handle successful login
@@ -45,8 +46,14 @@ const LoginPage = () => {
   return (
     <div className="login-page">
       <div className="left-background">
+        <div className="logo-container1">
+          <Link to="/" className="link">
+            <img src={logo} alt="Логотип" className="logo1" />
+            <h2>Multi-Tasker</h2>
+          </Link>
+        </div>
         <div className="content">
-          <h2>Страница аутентификации</h2>
+          <h3>Добро пожаловать!</h3>
           {errorMessage && <p className="error-message">{errorMessage}</p>}
           <form onSubmit={handleSubmit}>
             <div>

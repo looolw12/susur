@@ -2,16 +2,37 @@
     display: flex;
   }
   
-  .left-background {
-    background-color: white;
-    width: 30vw;
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
+.left-background {
+   background-color: white;
+   width: 40%;
+   min-height: 100vh;
+   display: flex;
+   justify-content: center;
+ }
   
-  .content {
-    padding: 20px;
-  }
+.content {
+  margin-top: 50%;
+   padding: 20px;
+ }
+
+ .logo-container1 {
+  position: absolute;
+  color: black;
+  display: flex;
+  align-items: center;
+  margin-top: 10px;
+}
+
+ .logo1 {
+  height: 70px;
+  width: auto;
+}
+
+.LoginIcon {
+  width: 366px;
+  height: 56px;
+}
   
+  h3 {
+    font-size: 28px;
+  }

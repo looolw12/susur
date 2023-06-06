@@ -25,8 +25,8 @@ class StartPage extends Component {
       <div>
         <header>
             <div className="logo-container">
-              <img src={logo} alt="Логотип компании" className="logo" />
-              <h1>Мое приложение</h1>
+              <img src={logo} alt="Логотип компании" className="logo" filter/>
+              <h1>Multi-Tasker</h1>
             </div>
             <div className="buttons-container">
               {isAuthenticated ? (
