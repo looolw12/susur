@@ -10,11 +10,13 @@ const CategoryPage = () => {
     getCategories();
   }, []);
 
+  const API_URL = 'http://localhost:8000'; // URL вашего бэкэнда
+
   const getCategories = () => {
     axios
-      .get('http://localhost:8000/categories', {
+      .get(`${API_URL}/categories`, {
         headers: {
-          Authorization: `Bearer ${localStorage.getItem('token')}`,
+          'Authorization': `Bearer ${localStorage.getItem('token')}`,
         },
       })
       .then((response) => {
@@ -39,12 +41,12 @@ const CategoryPage = () => {
 
     axios
       .post(
-        'http://localhost:8000/categories',
+        `${API_URL}/categories`,
         { name, description },
         {
           headers: {
             'Content-Type': 'application/json',
-            Authorization: `Bearer ${localStorage.getItem('token')}`,
+            'Authorization': `Bearer ${localStorage.getItem('token')}`,
           },
         }
       )
@@ -86,12 +88,12 @@ const CategoryPage = () => {
       </form>
       <h2>Categories</h2>
       <ul>
-        {categories.map((category) => (
-          <li key={category.id}>
-            <h3>{category.name}</h3>
-            <p>{category.description}</p>
-          </li>
-        ))}
+      {categories.map((category) => (
+  <li key={category.id}>
+    <h3>{category.name}</h3>
+    <p>{category.description}</p>
+  </li>
+))}
       </ul>
     </div>
   );

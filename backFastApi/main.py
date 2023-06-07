@@ -155,7 +155,18 @@ def get_categories(current_user: User = Depends(get_current_user)):
     categories = cursor.fetchall()
     cursor.close()
     conn.close()
-    return {'categories': categories}
+
+    categories_list = []
+    for category in categories:
+        category_dict = {
+            'id': category[0],
+            'name': category[1],
+            'description': category[2]
+        }
+        categories_list.append(category_dict)
+
+    return {'categories': categories_list}
+
 
 
 @app.options("/login")
