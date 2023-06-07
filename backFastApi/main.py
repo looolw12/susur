@@ -143,6 +143,20 @@ def create_category(category: Category, current_user: User = Depends(get_current
     conn.close()
     return {'message': 'Category created successfully'}
 
+@app.delete('/categories/{category_id}')
+def delete_category(category_id: int, current_user: User = Depends(get_current_user)):
+    conn = psycopg2.connect(**db_config)
+    cursor = conn.cursor()
+    cursor.execute(
+        '''
+        DELETE FROM categories WHERE id = %s AND user_id = %s;
+        ''', (category_id, current_user[0])
+    )
+    conn.commit()
+    cursor.close()
+    conn.close()
+    return {'message': 'Category deleted successfully'}
+
 @app.get('/categories')
 def get_categories(current_user: User = Depends(get_current_user)):
     conn = psycopg2.connect(**db_config)

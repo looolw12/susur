@@ -10,13 +10,11 @@ const CategoryPage = () => {
     getCategories();
   }, []);
 
-  const API_URL = 'http://localhost:8000'; // URL вашего бэкэнда
-
   const getCategories = () => {
     axios
-      .get(`${API_URL}/categories`, {
+      .get('http://localhost:8000/categories', {
         headers: {
-          'Authorization': `Bearer ${localStorage.getItem('token')}`,
+          Authorization: `Bearer ${localStorage.getItem('token')}`,
         },
       })
       .then((response) => {
@@ -41,12 +39,12 @@ const CategoryPage = () => {
 
     axios
       .post(
-        `${API_URL}/categories`,
+        'http://localhost:8000/categories',
         { name, description },
         {
           headers: {
             'Content-Type': 'application/json',
-            'Authorization': `Bearer ${localStorage.getItem('token')}`,
+            Authorization: `Bearer ${localStorage.getItem('token')}`,
           },
         }
       )
@@ -63,37 +61,49 @@ const CategoryPage = () => {
       });
   };
 
+  const handleDelete = (categoryId) => {
+    axios
+      .delete(`http://localhost:8000/categories/${categoryId}`, {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem('token')}`,
+        },
+      })
+      .then((response) => {
+        console.log(response.data);
+        // Добавьте код для обработки успешного удаления категории
+        getCategories();
+      })
+      .catch((error) => {
+        console.error('Error:', error);
+        // Добавьте код для обработки ошибок
+      });
+  };
+
   return (
     <div style={{ backgroundColor: 'white' }}>
       <h2>Create Category</h2>
       <form onSubmit={handleSubmit}>
         <label>
           Name:
-          <input
-            type="text"
-            value={name}
-            onChange={handleNameChange}
-          />
+          <input type="text" value={name} onChange={handleNameChange} />
         </label>
         <br />
         <label>
           Description:
-          <textarea
-            value={description}
-            onChange={handleDescriptionChange}
-          />
+          <textarea value={description} onChange={handleDescriptionChange} />
         </label>
         <br />
         <input type="submit" value="Create" />
       </form>
       <h2>Categories</h2>
       <ul>
-      {categories.map((category) => (
-  <li key={category.id}>
-    <h3>{category.name}</h3>
-    <p>{category.description}</p>
-  </li>
-))}
+        {categories.map((category) => (
+          <li key={category.id}>
+            <h3>{category.name}</h3>
+            <p>{category.description}</p>
+            <button onClick={() => handleDelete(category.id)}>Delete</button>
+          </li>
+        ))}
       </ul>
     </div>
   );
