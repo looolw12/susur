@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import {Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import './RegisterPage.css';
+import logo from './logo.svg';
+
 
 const RegisterPage = () => {
   const [username, setUsername] = useState('');
@@ -33,12 +35,19 @@ const RegisterPage = () => {
 
   return (
     <div className="register-page">
-      <div className="left-background">
-        <div className="content">
-          <h2>Страница регистрации</h2>
+      <div className="left-background-register">
+        <div className="logo-container-register">
+          <Link to="/" className="link">
+            <img src={logo} alt="Логотип" className="logo-register" />
+            <h2>Multi-Tasker</h2>
+          </Link>
+        </div>
+      <div className="left-background-register">
+        <div className="content-register">
+          <h3>Добро пожаловать!</h3>
           <form onSubmit={handleSubmit}>
             <div>
-              <label htmlFor="username">Имя пользователя:</label>
+              <label htmlFor="username">Email:</label>
               <input type="text" id="username" value={username} onChange={handleUsernameChange} required />
             </div>
             <div>
@@ -49,6 +58,7 @@ const RegisterPage = () => {
           </form>
         </div>
       </div>
+    </div>
     </div>
   );
 };

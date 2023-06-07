@@ -1,0 +1,34 @@
+.register-page {
+  display: flex;
+}
+
+.left-background-register {
+ background-color: white;
+ width: 40%;
+ min-height: 100vh;
+ display: flex;
+ justify-content: center;
+}
+
+.content-register {
+margin-top: 50%;
+ padding: 20px;
+}
+
+.logo-container-register {
+position: absolute;
+color: black;
+display: flex;
+margin-top: 10px;
+}
+
+.logo-register {
+display: flex;
+height: 70px;
+width: auto;
+}
+
+.RegisterIcon {
+width: 366px;
+height: 56px;
+}

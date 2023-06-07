@@ -23,7 +23,7 @@ const LoginPage = () => {
 
     try {
       // Send login request to the backend
-      const response = await axios.post('http://127.0.0.1:8000/login', {
+      const response = await axios.post('http://localhost:8000/login', {
         username: email,
         password: password,
       });
@@ -31,8 +31,11 @@ const LoginPage = () => {
       // Handle successful login
       console.log(response.data); // You can handle the response data according to your needs
 
-      // Redirect the user to the dashboard page after successful login
-      navigate('/dashboard');
+      // Save the token to local storage
+      localStorage.setItem('token', response.data.access_token);
+
+      // Redirect the user to the categories page after successful login
+      navigate('/categories');
     } catch (error) {
       // Handle error response
       if (error.response && error.response.status === 401) {
@@ -45,14 +48,14 @@ const LoginPage = () => {
 
   return (
     <div className="login-page">
-      <div className="left-background">
-        <div className="logo-container1">
+      <div className="left-background-login">
+        <div className="logo-container-login">
           <Link to="/" className="link">
-            <img src={logo} alt="Логотип" className="logo1" />
+            <img src={logo} alt="Логотип" className="logo-login" />
             <h2>Multi-Tasker</h2>
           </Link>
         </div>
-        <div className="content">
+        <div className="content-login">
           <h3>Добро пожаловать!</h3>
           {errorMessage && <p className="error-message">{errorMessage}</p>}
           <form onSubmit={handleSubmit}>

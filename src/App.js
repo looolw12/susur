@@ -4,6 +4,7 @@ import StartPage from './StartPage';
 import LoginPage from './LoginPage';
 import RegisterPage from './RegisterPage';
 import AuthenticatedPage from './AuthenticatedPage';
+import CategoryPage from './CategoryPage'; 
 import './App.css';
 
 class App extends React.Component {
@@ -16,6 +17,7 @@ class App extends React.Component {
             <Route path="/login" element={<LoginPage />} />
             <Route path="/register" element={<RegisterPage />} />
             <Route path="/authenticated" element={<AuthenticatedPage />} />
+            <Route path="/categories" element={<CategoryPage />} />
           </Routes>
         </div>
       </Router>
